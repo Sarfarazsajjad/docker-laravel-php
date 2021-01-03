@@ -1,6 +1,6 @@
 # Dockerized Laravel PHP project setup
 
-starting from nginx we will define a docker-compose.yml file will list of all services we intend to define later
+starting from nginx we will define a docker-compose.yml file with list of all services we intend to define later
 
 ```yml
 version: "3.8"
