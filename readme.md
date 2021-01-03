@@ -58,6 +58,8 @@ from the base image dockerfile in github repo of php:7.4-fpm-alpine we found tha
 }
 ```
 
+docker-compose file updated for the php container
+
 ```yml
 version: "3.8"
 services:
