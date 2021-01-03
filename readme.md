@@ -80,3 +80,23 @@ services:
   # artisan:
   # npm:
 ```
+
+# adding a mysql container
+
+for the mysql container we will first define few environment variables in a mysql.env file inside env folder
+
+```environment
+MYSQL_DATABASE=homestead
+MYSQL_USER=homestead
+MYSQL_PASSWORD=secret
+MYSQL_ROOT_PASSWORD=secret
+```
+
+then update the docker-compose file mysql service
+
+```yml
+  mysql:
+    image: mysql:5.7
+    env_file:
+      -./env/mysql.env
+```
