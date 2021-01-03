@@ -123,3 +123,11 @@ composer:
     volumes:
       - ./src:/var/www/html
 ```
+
+## creating a laravel project via composer utility container
+
+we will run the following command to create a laravel project
+
+```bash
+docker-compose run --rm composer create-project laravel/laravel .
+```
