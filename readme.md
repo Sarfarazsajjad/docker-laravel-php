@@ -100,3 +100,26 @@ then update the docker-compose file mysql service
     env_file:
       -./env/mysql.env
 ```
+
+## adding a composer utility container
+
+now we will create another dockerfile for configuring our own entry point for the avaialbe composer image on docker hub.
+
+```dockerfile
+FROM composer:latest
+
+WORKDIR /var/www/html
+
+ENTRYPOINT [ "composer", "--ignore-platform-reqs" ]
+```
+
+now we will define composer container in docker-compose file
+
+```yml
+composer:
+    build:
+      context: dockerfiles
+      dockerfile: composer.dockerfile
+    volumes:
+      - ./src:/var/www/html
+```
