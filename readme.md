@@ -131,3 +131,35 @@ we will run the following command to create a laravel project
 ```bash
 docker-compose run --rm composer create-project laravel/laravel .
 ```
+
+## fix for linux machine
+
+you need to provice permission like this
+
+```bash
+sudo chmod -R o+w src/storage src/bootstrap/cache
+```
+## running the laravel project
+
+after creating dependencies for the server service in docker-compose file like this
+
+```yaml
+services:
+  server:
+    image: 'nginx:stable-alpine'
+    ports:
+      - '8000:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./src:/var/www/html
+    depends_on:
+      - php
+      - mysql
+```
+you can run the project with follwoing command
+
+```bash
+sudo docker-compose up -d --build server
+```
+
+this will only run required services leaving other utility containers aside.
