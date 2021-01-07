@@ -163,3 +163,13 @@ sudo docker-compose up -d --build server
 ```
 
 this will only run required services leaving other utility containers aside.
+
+## deployment ready setup
+
+for deployment we need the images independent from the files and folders outside. that is why we need to copy src into both nginx and php containers. but for php container we need to provide special permissions to a predefined user inside the container like this
+
+```dockerfile
+RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
+
+USER laravel 
+```
